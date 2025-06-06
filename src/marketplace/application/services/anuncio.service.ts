@@ -5,11 +5,14 @@ import { CreateAnuncioDto } from '../dto/create-anuncio.dto';
 import { UpdateAnuncioDto } from '../dto/update-anuncio.dto';
 import { Precio } from '../../domain/value-objects/precio.vo';
 import { Ubicacion } from '../../domain/value-objects/ubicacion.vo';
-import { Categoria, EstadoAnuncio } from '../../domain/value-objects/enums';
+import { Categoria } from '../../domain/value-objects/enums';
 
 @Injectable()
 export class AnuncioService {
-  constructor(@Inject('AnuncioRepository') private readonly anuncioRepository: AnuncioRepository) {}
+  constructor(
+    @Inject('AnuncioRepository')
+    private readonly anuncioRepository: AnuncioRepository,
+  ) {}
 
   async create(createAnuncioDto: CreateAnuncioDto): Promise<Anuncio> {
     const precio = new Precio(
